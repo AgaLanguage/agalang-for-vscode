@@ -1,0 +1,112 @@
+{
+	"name": "aga-language",
+	"displayName": "Lenguaje Aga",
+	"description": "suporte para el Lenguaje Aga",
+	"version": "2.0.0",
+	"engines": {
+		"vscode": "^1.102.0"
+	},
+	"icon": "aga.png",
+	"publisher": "aga-language",
+	"categories": [
+		"Programming Languages"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "agalanguage",
+				"aliases": [
+					"Lenguaje Aga",
+					"agalanguage"
+				],
+				"extensions": [
+					".aga"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "agalanguage",
+				"scopeName": "source.agal",
+				"path": "./syntaxes/agalanguage.tmLanguage.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "agalanguage",
+				"path": "./snippets/agalanguage.json"
+			}
+		],
+		"configuration": {
+			"title": "Agal extension",
+			"properties": {
+				"agalang.exe_path": {
+					"type": "string",
+					"description": "The path for the exe"
+				},
+				"agalang.types.showString": {
+					"type": "boolean",
+					"description": "Show a preview of literal strings",
+					"default": true
+				},
+				"agalang.types.maxLength": {
+					"type": "number",
+					"description": "Length for the preview type",
+					"default": 15
+				}
+			}
+		},
+		"semanticTokenTypes": [
+			{
+				"id": "variable",
+				"description": "Variable"
+			},
+			{
+				"id": "function",
+				"description": "Function"
+			},
+			{
+				"id": "parameter",
+				"description": "Parameter"
+			},
+			{
+				"id": "class",
+				"description": "Class"
+			},
+			{
+				"id": "namespace",
+				"description": "Namespace"
+			},
+			{
+				"id": "control",
+				"description": "Namespace"
+			}
+		],
+		"semanticTokenModifiers": [
+			{
+				"id": "readonly",
+				"description": "Readonly variable"
+			},
+			{
+				"id": "iterable",
+				"description": "Iterable variable"
+			}
+		],
+		"configurationDefaults": {
+			"[agalanguage]": {
+				"editor.semanticHighlighting.enabled": true,
+				"files.autoSave": "afterDelay"
+			}
+		}
+	},
+	"capabilities": {
+		"semanticTokensProvider": true
+	},
+	"license": "MIT",
+	"repository": {
+		"url": "https://github.com/AgaLanguage/agalang-for-vscode.git",
+		"type": "git"
+	}
+}

@@ -1,0 +1,119 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Lenguaje Aga",
+	"patterns": [
+		{ "include": "#keywords" },
+		{ "include": "#constants" },
+		{ "include": "#strings" },
+		{ "include": "#supports" },
+		{ "include": "#variables" },
+		{
+			"name": "comment.line",
+			"match": "#.*$"
+		}
+	],
+	"repository": {
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.agalanguage",
+					"match": "\\b([0-9]+[0-9_]*(?:\\.[0-9]+[0-9_]*)?)\\b"
+				},
+				{
+					"name": "constant.numeric.agalanguage",
+					"match": "\\b(0b(0|1)(_?(0|1))*)|(0by(0|1)(_?(0|1)){,7})|(0o[0-7]+)|(0d[0-9]+)|(0x[0-9a-fA-F]+)\\b"
+				},
+				{
+					"name": "constant.numeric.agalanguage",
+					"match": "\\b(0n(2[|][01](_?[01])*|3[|][0-2](_?[0-2])*|4[|][0-3](_?[0-3])*|5[|][0-4](_?[0-4])*|6[|][0-5](_?[0-5])*|7[|][0-6](_?[0-6])*|8[|][0-7](_?[0-7])*|9[|][0-8](_?[0-8])*|10[|][0-9](_?[0-9])*|11[|][0-9aA](_?[0-9aA])*|12[|][0-9a-bA-B](_?[0-9a-bA-B])*|13[|][0-9a-cA-C](_?[0-9a-cA-C])*|14[|][0-9a-dA-D](_?[0-9a-dA-D])*|15[|][0-9a-eA-E](_?[0-9a-eA-E])*|16[|][0-9a-fA-F](_?[0-9a-fA-F])*|17[|][0-9a-gA-G](_?[0-9a-gA-G])*|18[|][0-9a-hA-H](_?[0-9a-hA-H])*|19[|][0-9a-iA-I](_?[0-9a-iA-I])*|20[|][0-9a-jA-J](_?[0-9a-jA-J])*|21[|][0-9a-kA-K](_?[0-9a-kA-K])*|22[|][0-9a-lA-L](_?[0-9a-lA-L])*|23[|][0-9a-mA-M](_?[0-9a-mA-M])*|24[|][0-9a-nA-N](_?[0-9a-nA-N])*|25[|][0-9a-oA-O](_?[0-9a-oA-O])*|26[|][0-9a-pA-P](_?[0-9a-pA-P])*|27[|][0-9a-qA-Q](_?[0-9a-qA-Q])*|28[|][0-9a-rA-R](_?[0-9a-rA-R])*|29[|][0-9a-sA-S](_?[0-9a-sA-S])*|30[|][0-9a-tA-T](_?[0-9a-tA-T])*|31[|][0-9a-uA-U](_?[0-9a-uA-U])*|32[|][0-9a-vA-V](_?[0-9a-vA-V])*|33[|][0-9a-wA-W](_?[0-9a-wA-W])*|34[|][0-9a-xA-X](_?[0-9a-xA-X])*|35[|][0-9a-yA-Y](_?[0-9a-yA-Y])*|36[|][0-9a-zA-Z](_?[0-9a-zA-Z])*))\\b"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"comment": "Constantes del lenguaje",
+					"name": "constant.language.agalanguage",
+					"match": "\\b(cierto|falso|nulo)\\b"
+				},
+				{ "include": "#numbers" }
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.agalanguage",
+					"match": "\\b(si|ent|mien|ret|intenta|captura|lanza|finalmente|cont|rom|importa|como|con|exporta|espera|nombre|vago|haz|lanza|para)\\b"
+				},
+				{
+					"name": "keyword.other",
+					"match": "\\b(fn|clase|constructor|extiende|est|def|const|esto|super|asinc|pub|csl|borra)\\b"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.agalanguage",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.agalanguage",
+							"match": "\\\\."
+						},
+						{
+							"begin": "\\{",
+							"end": "\\}",
+							"beginCaptures": {
+								"0": { "name": "punctuation.definition.template-expression.begin.agalanguage" }
+							},
+							"endCaptures": {
+								"0": { "name": "punctuation.definition.template-expression.end.agalanguage" }
+							},
+							"name": "meta.template.agalanguage",
+							"patterns": [
+								{
+									"name": "variable.interpolation.agalanguage",
+									"match": "[a-zA-ZñÑ_][a-zA-ZñÑ0-9_]*"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.agalanguage",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.agalanguage",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"supports": {
+			"patterns": [
+				{
+					"name": "support.function.agalanguage",
+					"match": "\\b([a-zñ_$][a-zA-ZñÑ0-9_$]*)\\b\\s*\\("
+				},
+				{
+					"name": "support.class.agalanguage",
+					"match": "\\b([A-ZÑ][a-zA-ZñÑ0-9_$]*)\\b"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.name.agalanguage",
+					"match": "\\b([a-zA-ZñÑ_$][a-zA-ZñÑ0-9_$]*)\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.agal"
+}

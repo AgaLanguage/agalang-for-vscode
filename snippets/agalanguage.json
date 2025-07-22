@@ -1,0 +1,33 @@
+{
+  "Bloque de Funcion": {
+    "prefix": "fn",
+    "body": [
+      "fn ${1:nombre}(${2:argumentos}) {",
+      "\t${3:bloque de codigo}",
+      "}"
+    ],
+    "description": "Genera un Bloque de Funcion"
+  },
+  "Bloque de Clase": {
+    "prefix": "cl",
+    "body": [
+      "clase ${1:nombre} {",
+      "\tconstructor(${2:argumentos}) {",
+      "\t\t${3:bloque de codigo}",
+      "\t}",
+      "}"
+    ],
+    "description": "Genera un Bloque de Clase"
+  },
+  "Bloque de Si": {
+    "prefix": "if",
+    "body": [
+      "si (${1:condicion}) {",
+      "\t${2:bloque de codigo}",
+      "} ent {",
+      "\t${3:bloque de codigo}",
+      "}"
+    ],
+    "description": "Genera un Bloque de If"
+  }
+}
