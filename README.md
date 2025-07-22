@@ -1,3 +1,3 @@
 # Aga-Language
-## suport .agal files"agal-vscde"
-[Repositorio de Aga Language](https://github.com/AgaDevInc/AgaLanguage/)
+## suport .aga files "agal-vscode"
+[Repositorio de Aga Language](https://github.com/AgaLanguage/agalang-core/)
