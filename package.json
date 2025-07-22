@@ -1,7 +1,7 @@
 {
 	"name": "aga-language",
 	"displayName": "Lenguaje Aga",
-	"description": "suporte para el Lenguaje Aga",
+	"description": "soporte para el Lenguaje Aga",
 	"version": "2.0.0",
 	"engines": {
 		"vscode": "^1.102.0"
@@ -101,12 +101,12 @@
 			}
 		}
 	},
-	"capabilities": {
-		"semanticTokensProvider": true
-	},
-	"license": "MIT",
+	"license": "GPL-3.0-only",
 	"repository": {
 		"url": "https://github.com/AgaLanguage/agalang-for-vscode.git",
 		"type": "git"
-	}
+	},
+	"activationEvents": [
+		"onLanguage:agalanguage"
+	]
 }
